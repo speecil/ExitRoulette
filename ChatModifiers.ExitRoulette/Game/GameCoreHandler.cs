@@ -14,9 +14,9 @@ namespace ExitRoulette.Game
 
         public void Initialize()
         {
-            _chance = (int)ExitRouletteModifier.customModifier.ModifierSettings.AdditionalSettings["Chance"];
+            _chance = int.Parse(ExitRouletteModifier.customModifier.ModifierSettings.AdditionalSettings["Chance"].ToString());
             ExitRouletteModifier.customModifier.Function = ExitAction;
-            ExitRouletteModifier.customModifier.CoolDown = (int)ExitRouletteModifier.customModifier.ModifierSettings.AdditionalSettings["SecondsActive"] + 5;
+            ExitRouletteModifier.customModifier.CoolDown = int.Parse((int.Parse(ExitRouletteModifier.customModifier.ModifierSettings.AdditionalSettings["SecondsActive"].ToString()) + 5).ToString());
         }
 
         private void ExitAction(ChatModifiers.API.MessageInfo messageInfo, object[] args)
