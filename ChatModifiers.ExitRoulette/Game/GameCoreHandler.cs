@@ -14,6 +14,7 @@ namespace ExitRoulette.Game
 
         public void Initialize()
         {
+            _isInExitRoulette = false;
             _chance = int.Parse(ExitRouletteModifier.customModifier.ModifierSettings.AdditionalSettings["Chance"].ToString());
             ExitRouletteModifier.customModifier.Function = ExitAction;
             ExitRouletteModifier.customModifier.CoolDown = int.Parse((int.Parse(ExitRouletteModifier.customModifier.ModifierSettings.AdditionalSettings["SecondsActive"].ToString()) + 5).ToString());
@@ -25,6 +26,7 @@ namespace ExitRoulette.Game
             {
                 return;
             }
+            SharedCoroutineStarter.instance.StopUniqueCoroutine(ExitCoroutine);
             SharedCoroutineStarter.instance.StartCoroutine(ExitCoroutine());
         }
 
